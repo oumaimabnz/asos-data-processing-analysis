@@ -1,8 +1,30 @@
 # ASOS Data Processing Analysis
 
+## Dashboard Preview
+
+![Brand Strategy Dashboard](outputs/plots/brand_strategy_dashboard.png)
+
+---
+
+## Project Overview
+
 This project implements a Python pipeline for cleaning, analyzing, and visualizing e-commerce product data from an ASOS dataset.
 
 The workflow focuses on data preprocessing, feature engineering, stockout metrics, lost revenue estimation, and brand-level strategy analysis.
+
+---
+
+## Example Insights
+
+- Brands located in the **top-right quadrant** (high price and high stockout rate) represent the most critical business opportunities, as they combine strong demand with high potential revenue loss.
+
+- Larger bubbles indicate higher estimated lost revenue, helping identify brands where stock availability issues have the greatest financial impact.
+
+- Brands in the **bottom-left quadrant** (low price and low stockout rate) are stable and require less immediate attention.
+
+- This visualization supports data-driven decisions for inventory optimization and pricing strategies.
+
+---
 
 ## Features
 
@@ -55,7 +77,7 @@ asos-data-processing-analysis/
 ## Installation
 
 ````bash
-git clone https://github.com/YOUR_USERNAME/asos-data-processing-analysis.git
+git clone https://github.com/oumaimabnz/asos-data-processing-analysis.git
 cd asos-data-processing-analysis
 python -m venv .venv
 
@@ -69,7 +91,7 @@ Windows:
 
 macOS/Linux:
 ```bash
-macOS/Linux
+source .venv/bin/activate
 ```
 
 Install dependencies:
