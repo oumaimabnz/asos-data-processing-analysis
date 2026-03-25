@@ -14,18 +14,6 @@ The workflow focuses on data preprocessing, feature engineering, stockout metric
 
 ---
 
-## Example Insights
-
-- Brands located in the **top-right quadrant** (high price and high stockout rate) represent the most critical business opportunities, as they combine strong demand with high potential revenue loss.
-
-- Larger bubbles indicate higher estimated lost revenue, helping identify brands where stock availability issues have the greatest financial impact.
-
-- Brands in the **bottom-left quadrant** (low price and low stockout rate) are stable and require less immediate attention.
-
-- This visualization supports data-driven decisions for inventory optimization and pricing strategies.
-
----
-
 ## Features
 
 - CSV data ingestion
@@ -40,6 +28,76 @@ The workflow focuses on data preprocessing, feature engineering, stockout metric
 - Export of processed data to CSV and JSON
 - Modular project structure
 - Basic unit testing
+
+---
+
+## Data Workflow
+
+The data processing pipeline follows a structured workflow:
+
+1. **Data Ingestion**
+   - Load raw product dataset from CSV file
+   - Handle parsing issues and malformed rows
+
+2. **Data Cleaning**
+   - Convert price values to numeric format
+   - Remove missing or invalid entries
+   - Standardize text fields (e.g., product descriptions)
+
+3. **Brand Extraction & Processing**
+   - Extract brand names from product descriptions
+   - Handle inconsistent formats (e.g., "StradivariusThrow")
+   - Normalize brand naming using mapping and preprocessing rules
+
+4. **Feature Engineering**
+   - Compute stockout count from size availability
+   - Calculate stockout rate per product
+   - Estimate lost revenue based on stockouts and price
+
+5. **Data Filtering**
+   - Remove low-frequency brands to ensure reliable analysis
+
+6. **Aggregation & Analysis**
+   - Group data by brand
+   - Compute:
+     - Average price
+     - Average stockout rate
+     - Total lost revenue
+     - Number of products
+
+7. **Visualization**
+   - Generate a dashboard-style scatter plot:
+     - X-axis: Average price
+     - Y-axis: Stockout rate
+     - Bubble size: Lost revenue
+   - Highlight high-impact brands
+
+8. **Output Generation**
+   - Export cleaned dataset to CSV and JSON
+   - Save aggregated analysis results
+   - Save visualization as image
+
+---
+
+## Automation
+
+The entire workflow is automated through a pipeline:
+
+- A single entry point (`main.py`) executes all steps
+- Modular scripts handle each stage (preprocessing, analysis, visualization)
+- No manual intervention is required once the pipeline is triggered
+
+This ensures reproducibility and consistency across runs.
+
+---
+
+## Key Insights
+
+- Brands with **high price and high stockout rate** represent the highest revenue loss
+- Larger bubbles indicate brands with significant financial impact
+- The dashboard helps identify opportunities for inventory optimization and pricing strategies
+
+---
 
 ## Project Structure
 
@@ -114,7 +172,6 @@ python -m pytest
 ````
 
 ---
-
 
 ## Outputs
 
